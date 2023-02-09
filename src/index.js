@@ -1,33 +1,43 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import App from './components/App/App';
-// import { Provider } from "react-redux";
-// import logger from "redux-logger";
-// import { takeEvery, put, take } from "redux-saga/effects";
-// import { createStore, combineReducers, applyMiddleware } from "redux";
-// // SAGA middlewhere 
-// import createSagaMiddleware from "redux-saga";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App/App";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import logger from "redux-logger";
+import { Provider } from "react-redux";
 
-// const sagaMiddleware= createSagaMiddleware();
+const getFavorites = (state = [], action) => {
+  switch (action.type) {
+    case "GET_FAVORITES":
+      return action.payload;
+    case "ADD_TO_FAVORITES":
+      return [...state, action.payload];
+    default:
+      return state;
+  }
+};
 
-// function * rootSaga(){
-//     // takeEvery goes here
-// }
+// IL5j1z69Qi7NTLTL7j
 
+const displaySearch = (state = [], action) => {
+  switch (action.type) {
+    case "SHOW_GIFS":
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
+const storeInstance = createStore(
+  combineReducers({
+    getFavorites,
+    displaySearch,
+  }),
+  applyMiddleware(logger)
+);
 
-
-
-// const storeInstance= createStore(
-//     ({
-//         // reducers go here
-
-//     })
-// )
-// //middleWare
-// applyMiddleware(logger,sagaMiddleware)
-
-
-// ReactDOM.render(
-//     <Provider store={storeInstance}>
-// <App /> </Provider>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={storeInstance}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

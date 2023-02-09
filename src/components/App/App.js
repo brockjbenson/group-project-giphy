@@ -1,10 +1,21 @@
-import React from 'react';
+import React from "react";
+import Favorites from "../Favorites/favorites";
+import { HashRouter as Router, Link, Route, NavLink} from "react-router-dom";
+import Search from "../Search/Search";
 
-function App(props) {
+function App() {
   return (
-    <div>
-      <h1>Giphy Search!</h1>
-    </div>
+    <Router>
+      <NavLink className="NavFavorite" to="/favorites"> Favorites </NavLink>
+      <NavLink className="NavSearch" to="/search"> Search </NavLink>
+      <Route path="/search" exact>
+        <Search />
+      </Route>
+
+      <Route path="/favorites">
+        <Favorites />
+      </Route>
+    </Router>
   );
 }
 

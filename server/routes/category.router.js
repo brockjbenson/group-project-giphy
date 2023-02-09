@@ -19,17 +19,4 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/test", (req, res) => {
-  let { qParam } = req.body;
-  axios
-    .get(
-      `https://api.giphy.com/v1/gifs/search?q=${qParam}&api_key=${process.env.API_KEY}`
-    )
-    .then((response) => res.send(response.data))
-    .catch((err) => {
-      res.sendStatus(500);
-      console.log(err);
-    });
-});
-
 module.exports = router;
