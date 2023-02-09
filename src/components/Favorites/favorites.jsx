@@ -31,6 +31,7 @@ export default function Favorites() {
       <h1>Favorites</h1>
       {favs.map((gif, index) => (
         <div key={index}>
+          <h3>{gif.title}</h3>
           <img src={gif.url} />
         </div>
       ))}
