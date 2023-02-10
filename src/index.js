@@ -27,7 +27,8 @@ function* fetchCategory() {
 //POST CATEGORY
 function* addCategory(action){
   try{
-    yield axios.post(`/api/favorite/test${action.payload}`);
+    yield axios.post(`/api/favorite/test${action.payload}`)
+    yield put({type: "SHOW_GIFS" });
   }catch(error){
     console.log("ERROR ON LINE 32", error)
   }

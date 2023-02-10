@@ -1,3 +1,13 @@
-ul{
+ul {
   list-style: none;
+}
+
+h3 {
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+img {
+  margin-top: 30px;
+  display: inline-block;
 }

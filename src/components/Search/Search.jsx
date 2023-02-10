@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FcLike } from "react-icons/fc";
+import "./search.css";
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -56,11 +57,11 @@ export default function Search() {
         <h2>Gifs:</h2>
         {gifs.map((gif, index) => (
           <div className="gif-item" key={index}>
-            <p>{gif.title}</p>
+            <p>{gif.title} <button onClick={() => addFav(gif.images.original.url)}>
+              <FcLike />
+            </button></p>
             <img src={gif.images.original.url} />
-            <button onClick={() => addFav(gif.images.original.url)}>
-            <FcLike />
-            </button>
+            
           </div>
         ))}
       </div>
