@@ -58,41 +58,46 @@ export default function Favorites() {
   };
 
   return (
-    <>
-      <h1>Favorites</h1>
-      <label for="category">Add a category:</label>
-      <select
-        id="category"
-        name="category"
-        value={categorySelection}
-        onChange={(e) => setCategorySelection(e.target.value)}
-      >
-        <option value="1">funny</option>
-        <option value="2">cohort</option>
-        <option value="3">cartoon</option>
-        <option value="4">nsfw</option>
-        <option value="5">meme</option>
-      </select>
-      {favs.map((gif, index) => (
-        <div key={index}>
-          <ul>
-            <li>
-              <h3>{gif.title}</h3>
-            </li>
-            <li>
+    <div className="body">
+      <header>
+        <h1>Favorites</h1>
+      </header>
+      <div className="drop-down">
+        <label for="category">Add a category:</label>
+        <select
+          id="category"
+          name="category"
+          value={categorySelection}
+          onChange={(e) => setCategorySelection(e.target.value)}
+        >
+          <option value="1">funny</option>
+          <option value="2">cohort</option>
+          <option value="3">cartoon</option>
+          <option value="4">nsfw</option>
+          <option value="5">meme</option>
+        </select>
+      </div>
+      <div className="allFavorites">
+        {favs.map((gif, index) => (
+          <div className="gif-container" key={index}>
+            <div className="img">
               <img src={gif.url} />
-            </li>
-            <li>
-              <h3>Current category: {listCategory(gif.category_id)}</h3>
-            </li>
-            <li>
-              <button onClick={() => setCategory(gif.id, categorySelection)}>
-                Add category
+            </div>
+            <div className="info">
+              <h3 className="current-cat">
+                Current Category:
+                <span className="cat">{listCategory(gif.category_id)}</span>
+              </h3>
+              <button
+                className="cat-btn"
+                onClick={() => setCategory(gif.id, categorySelection)}
+              >
+                Add Category
               </button>
-            </li>
-          </ul>
-        </div>
-      ))}
-    </>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -1,3 +1,16 @@
 p {
   margin-bottom: 2px;
 }
+
+.image {
+  margin-top: 2px;
+  margin-bottom: 8px;
+  width: 350px;
+  height: auto;
+}
+
+.allImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

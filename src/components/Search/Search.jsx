@@ -23,6 +23,7 @@ export default function Search() {
       .then((response) => {
         //let gifs = response.data;
         //console.log("this is response.data.data", response.data.data);
+        //sending all the gifs to redux
         dispatch({ type: "SHOW_GIFS", payload: response.data.data });
         //console.log("this is gifs", gifs);
       });
@@ -55,15 +56,17 @@ export default function Search() {
         />
         <button onClick={handleClick}>find</button>
         <h2>Gifs:</h2>
+        <div className="allImages">
         {gifs.map((gif, index) => (
           <div className="gif-item" key={index}>
             <p>{gif.title} <button onClick={() => addFav(gif.images.original.url)}>
               <FcLike />
             </button></p>
-            <img src={gif.images.original.url} />
+            <img class="image" src={gif.images.original.url} />
             
           </div>
         ))}
+        </div>
       </div>
     </>
   );

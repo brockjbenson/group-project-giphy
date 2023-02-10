@@ -55,9 +55,11 @@ router.delete("/", (req, res) => {
   res.sendStatus(200);
 });
 
+
 router.post("/test", (req, res) => {
   let qparam = req.body.searchWord;
   // req.query.searchWord;
+  //reaches out to giphy to get all of the gifs related to a keyword
   axios
     .get(
       `https://api.giphy.com/v1/gifs/search?q=${qparam}&api_key=${process.env.API_KEY}`
