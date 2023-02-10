@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { FcLike } from "react-icons/fc";
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ export default function Search() {
             <p>{gif.title}</p>
             <img src={gif.images.original.url} />
             <button onClick={() => addFav(gif.images.original.url)}>
-              Add to Favorites
+            <FcLike />
             </button>
           </div>
         ))}

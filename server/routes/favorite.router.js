@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 // add a new favorite
 router.post("/", (req, res) => {
   const url = req.body.url;
-  console.log("in the router, this is the url", url);
+  // console.log("in the router, this is the url", url);
   const queryText = `INSERT INTO favorites("url")
   VALUES($1);`;
   pool
@@ -34,12 +34,14 @@ router.post("/", (req, res) => {
 
 // update given favorite with a category id
 router.put("/:favId", (req, res) => {
-  let catagory = req.body;
+  let catagory = req.body.catagory;
+  let id = req.params.favId;
+
   queryText = `UPDATE "favorites" SET "category_id"=$1 WHERE id=$2`;
   pool
-    .query(queryText, [catagory.category_id])
+    .query(queryText, [catagory, id])
     .then((response) => {
-      res.sendStatus(200);
+      res.sendStatus(200);//also send back the updated list of favorites and their category
     })
     .catch((error) => {
       console.log("error on line 31", error);
